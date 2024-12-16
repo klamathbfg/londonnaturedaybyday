@@ -11,13 +11,8 @@
     --main-font: 'Open Sans', sans-serif;
 }
 
-header {
-    background-color: var(--color-brand-primary);
-}
-
 html, body {
     margin: 0;
-    padding: 0;
     font-family: var(--main-font);
     background-color: var(--color-background);
 }
@@ -46,7 +41,7 @@ nav ul li a:visited {
     color: var(--color-brand-headings);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.25em;
+    font-size: 0.9em;
 }
 
 h1, h2 {
@@ -68,8 +63,12 @@ article {
     margin-top: 2em;
 }
 
+header {
+    padding: 1em;
+    background-color: var(--color-brand-primary);
+}
+
 footer {
-    margin: 26em 0;
     padding: 1em;
     background-color: var(--color-footer-background);
 }
@@ -89,7 +88,13 @@ footer address h2 {
 }
 
 .logo-container {
+    text-align: left;
+    padding-top: 2em;
     display: none;
+}
+
+.logo-container img {
+    max-width: auto;
 }
 
 .site-banner {
@@ -102,13 +107,9 @@ footer address h2 {
     position: relative;
 }
 
-@media (min-width: 750px){  
-    .site-banner {
-        display: block;
-        text-align: center;
-        padding-top: 1em;
-        padding-bottom: 1em;
-    }
+.article-container {
+    display: flex;
+    min-height: 80vh;
 }
 
 .tiles-container {
@@ -120,7 +121,7 @@ footer address h2 {
 
 .tile {
     flex: 1 1 250px;
-    max-width: 300px;
+    max-width: 400px;
     background-color: var(--color-brand-contrast);
     border: 0.5px ridge var(--color-brand-contrast);
     outline 2px solid var(--color-brand-headings);
@@ -143,53 +144,13 @@ footer address h2 {
     height: auto%;
   }
 
-  @media (min-width: 960px){  
-    main {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    article, aside {
-        display: block;
-        flex-basis: 0;
-        flex-shrink: 1;
-        padding: 0.75rem;
-    }
-
-    article {
-        flex: 4;
-        padding-right: 6em;
-    }
-
-    aside {
-        flex: 1;
-    }
-
-    footer {
-        padding-left: 2%;
-    }
-
-    .logo-container {
-        display: block;
-        text-align: center;
-        padding-top: 2em;
-    }
-
-    .logo-container img {
-        max-width: 250px;
-    }
-
-    .tile {
-        flex: 1 0 400px;       
-    }
-}
-
 .tile-text {
     margin: 5%;
 }
+
 .tile-heading {
     margin: 5%;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     color: var(--color-brand-headings);
 }
@@ -200,4 +161,78 @@ footer address h2 {
     left: 10%;
     color: var(--color-brand-contrast);
     font-size: 1.2em;
+}
+
+@media (min-width: 400px){  
+    nav ul li a,
+    nav ul li a:active,
+    nav ul li a:hover,
+    nav ul li a:visited {
+        font-size: 1.1em;        
+    }    
+}
+
+@media (min-width: 750px){  
+    .site-banner {
+        display: block;
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    nav ul li a,
+    nav ul li a:active,
+    nav ul li a:hover,
+    nav ul li a:visited {
+        font-size: 1.4em;        
+    }    
+}
+
+@media (min-width: 960px){  
+    nav ul li a,
+    nav ul li a:active,
+    nav ul li a:hover,
+    nav ul li a:visited {
+        font-size: 2em;        
+    }
+
+    main {
+        display: flex;
+        width: 100%;
+    }
+
+    aside {
+        flex: 1;
+        max-width: 25%;
+    }
+
+    .article {
+        flex: 4;
+        padding-right: 6em;
+    }
+
+    footer {
+        padding-left: 2%;
+    }
+
+    .logo-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: top;
+    }
+
+    .logo-container img {
+        max-width: 250px;
+        padding-left: 1em;
+        padding-right: 2em;        
+    }
+
+    .tile {
+        flex: 1 0 400px;       
+    }
+
+    .tile-heading {
+        font-size: 1.1em;
+    }
 }
