@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>London Nature Artiles Home</title>
+    <title>London Nature Artile Group</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
                                    initial-scale=1.0">
@@ -16,20 +16,24 @@
             <ul>
                 <li><img src="https://dev-server.londonnaturedaybyday.com/static/images/site-main-art.jpg"
                     width="150" height="75" alt="London Nature day by day" class="site-banner"></li>
+                <li><a href="https://dev-server.londonnaturedaybyday.com/articles">All Articles</a></li>
                 <li><a href="http://www.google.com">Todays Article</a></li>
-                <li><a href="http://www.google.com">All Articles</a></li>
             </ul>
         </nav>
     </header>
-    {% if latest_article_group_list %} 
+    {% if latest_article_group_contents_list %} 
     <main>
         <section class="tiles-container"></section>
-            {% for article_group in latest_article_group_list %}
+            {% for article_group_content in latest_article_group_contents_list %}
             <div class="tile">
                 <P>
-                <a href="/articles/{{ article_group.id }}/" type="image/jpg"><img src="https://dev-server.londonnaturedaybyday.com/static{{article_group.tile_image}}" 
-                             alt="{{ article_group.title }}" class="centered-tile"></a>
+                <a href="/articles/{{ article_group_content.article.id }}/" type="image/jpg"><img src="https://dev-server.londonnaturedaybyday.com/static{{article_group_content.article.tile_image}}" 
+                             alt="{{ article_group_content.article.title}}" class="centered-tile"></a>
                 </P>
+                <div class="tile-text">
+                    <H2>{{ article_group_content.article.title}}</H2>
+                    {{ article_group_content.article.synopsis|safe }}
+                </div>
             </div>                
             {% endfor %}
         </section>

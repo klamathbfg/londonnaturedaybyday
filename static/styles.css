@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 :root {
     --color-brand-primary: #b7b5e19c;
     --color-brand-headings: #353365;
@@ -6,8 +7,7 @@
     --color-input-borders: #898989;
     --color-footer-background: #898989;
     --color-background: #e5e5e5;
-    --font-family: 'lato';
-    --font-style: 'normal';
+    --main-font: 'Open Sans', sans-serif;
 }
 
 header {
@@ -17,7 +17,7 @@ header {
 html, body {
     margin: 0;
     padding: 0;
-    font-family: var(--font-body);
+    font-family: var(--main-font);
     background-color: var(--color-background);
 }
 
@@ -135,7 +135,7 @@ footer address h2 {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    height: 90%;
+    height: auto%;
   }
 
   @media (min-width: 960px){  
@@ -177,4 +177,8 @@ footer address h2 {
     .tile {
         flex: 1 0 400px;       
     }
+}
+
+.tile-text {
+    margin: 5%;
 }

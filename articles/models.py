@@ -14,7 +14,10 @@ class Article_Group(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=200)
     tile_image = models.CharField(max_length=200) 
+    blog_image = models.CharField(max_length=200)     
+    youtube_video = models.CharField(max_length=1000, null=True, blank=True)     
     pub_date = models.DateTimeField("date to publish")
+    synopsis = models.CharField(max_length=1000)
 
     def __str__(self):
         return self.title
