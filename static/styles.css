@@ -7,6 +7,7 @@
     --color-input-borders: #898989;
     --color-footer-background: #898989;
     --color-background: #e5e5e5;
+    --box-shadow: #00000033;
     --main-font: 'Open Sans', sans-serif;
 }
 
@@ -57,7 +58,7 @@ article {
 }
 
 .roundedtables {
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 8px var(--box=shadow);
     border: solid 1px var(--color-table-shadow);
     border-radius: 1em;
     padding: 1.5em;
@@ -84,7 +85,7 @@ footer address p {
 
 footer address h2 {
     font-size: 1.25em;
-    color: black
+    color: var(--box=shadow);
 }
 
 .logo-container {
@@ -114,16 +115,20 @@ footer address h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .tile {
-    flex: 1 0 150px;
-    background-color:----color-brand-contrast;
-    border: 0.5px ridge --color-brand-contrast;
-    outline 2px solid --color-brand-headings;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 250px;
+    max-width: 300px;
+    background-color: var(--color-brand-contrast);
+    border: 0.5px ridge var(--color-brand-contrast);
+    outline 2px solid var(--color-brand-headings);
+    box-shadow: 0 2px 4px var(--box=shadow);
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
+    position: relative;
+    margin: 10px;
 }
 
 .tile:hover {
@@ -181,4 +186,18 @@ footer address h2 {
 
 .tile-text {
     margin: 5%;
+}
+.tile-heading {
+    margin: 5%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-brand-headings);
+}
+
+.bottom-left-over-image {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    color: var(--color-brand-contrast);
+    font-size: 1.2em;
 }
