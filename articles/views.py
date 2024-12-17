@@ -41,3 +41,14 @@ class ArticleView(generic.ListView):
         Return the list of published article groups
         """
         return Article.objects.filter(pub_date__lte=timezone.now(), pk=self.kwargs['pk'])
+    
+class today(generic.ListView):
+    model=Article
+    template_name = "articles/article.html"
+    context_object_name = "article_contents"
+
+    def get_queryset(self):
+        """
+        Return the list of published article groups
+        """
+        return Article.objects.filter(pub_date=timezone.now().date())
