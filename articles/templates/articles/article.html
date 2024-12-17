@@ -14,7 +14,7 @@
         <nav>
             <ul>
                 <li><img src="https://dev-server.londonnaturedaybyday.com/static/images/site-main-art.jpg"
-                    width="150" height="75" alt="London Nature day by day" class="site-banner"></li>
+                    width="100" height="50" alt="London Nature day by day" class="site-banner"></li>
                 <li><a href="https://dev-server.londonnaturedaybyday.com/">Home</a></li>
                 <li><a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a></li>
             </ul>
@@ -76,10 +76,39 @@
                     </div>
                     {% endif %}                    
                     <P></P>
-                </div>
+                </div>       
                 {% endfor %}        
             </div> 
         </section>    
+        {% empty %}        
+        <div class="article-container">
+            <div class="logo-container">
+                <div class="aside">
+                    <img src="https://dev-server.londonnaturedaybyday.com/static/images/site-square.jpg" alt="London Nature day by day Logo"
+                        width="250" height="250">
+                </div>
+            </div>
+            <div class="article">
+                <P></P>
+                <div class="youtube-container">
+                    <iframe width=auto height=auto src="https://www.youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
+                </div>
+                <H2>Coming Soon</H2>
+                <p>London Nature Day by Day will be coming on 01 January, until then you can enjoy a teaser of the content
+                    that will be coming using the <a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a> link.
+                </p>
+            </div>
+        </div>         
+        <footer>
+            <div class="footer">
+                <address>
+                    <h2>London Nature Day by Day</h2>
+                    <p>London, United Kingdom</p>
+                </address>
+                <p>All rights reserved &copy; London Nature Day by Day</p>
+                <p>Contact us via <a href="mailto:tom@londonnaturedaybyday.com">email</a>.</p>
+            </div>    
+        </footer>                
         {% endfor %}
     </main> 
 </body>
