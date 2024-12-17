@@ -3,7 +3,6 @@ from django.views import generic
 from django.utils import timezone
 from django.db.models.functions import ExtractMonth, ExtractDay
 
-
 from .models import Article_Group, Article_Group_Link, Article
 
 #def index(request):
