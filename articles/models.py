@@ -20,7 +20,7 @@ class Article(models.Model):
     youtube_video = models.CharField(max_length=1000, null=True, blank=True)     
     tile_image = models.ImageField(null=True, blank=True)
     blog_image = models.ImageField(null=True, blank=True)
-    pub_date = models.DateTimeField("date to publish")
+    pub_date = models.DateTimeField("date to publish") 
     synopsis = models.TextField(null=True, blank=True)    
 
     def __str__(self):

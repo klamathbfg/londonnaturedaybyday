@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from django.views import generic
 from django.utils import timezone
+from django.db.models.functions import ExtractMonth, ExtractDay
+
 
 from .models import Article_Group, Article_Group_Link, Article
 
@@ -48,7 +49,14 @@ class today(generic.ListView):
     context_object_name = "article_contents"
 
     def get_queryset(self):
+        today = timezone.now()
         """
         Return the list of published article groups
         """
-        return Article.objects.filter(pub_date=timezone.now().date())
+        return Article.objects.filter(pub_date__month=today.month, pub_date__day=today.day) 
+        """
+        return Article.objects.filter(pub_date__month=today.month,
+                                      pub_date__day=today.day)
+        return Article.objects.filter(pub_date=timezone.now().date())               
+        return Article.objects.filter(pub_month=today.month, pub_month=today.day)                           
+        """

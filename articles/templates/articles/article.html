@@ -22,6 +22,7 @@
     </header>
     <main>
         {% for article in article_contents %}
+
         <section class="article-container-squashed">
             <div class="logo-container">
                 <div class="aside">
@@ -34,7 +35,7 @@
                 <div class="youtube-container">
                     <iframe width=auto height=auto src="{{article.youtube_video }}" allowfullscreen id="HomePageVideo"></iframe>
                 </div>
-                <H2>Synopsis</H2>
+                <H2>Summary</H2>
                 {{ article.synopsis|safe }}
                 <H2>Article</H2>
                 {% for article_section_link in article.article_section_link_set.all|dictsort:'sort_order' %}
@@ -77,6 +78,11 @@
                     {% endif %}                    
                     <P></P>
                 </div>       
+                {% empty %}     
+                <p>
+                The full article will be launched on {{ article.pub_date|date:"d F" }} until then you can enjoy a teaser of the content
+                that will be coming here and all articles using the <a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a> link.
+                </p>
                 {% endfor %}        
             </div> 
         </section>    
