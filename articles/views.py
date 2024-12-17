@@ -29,7 +29,6 @@ class ArticleGroupContentsView(generic.ListView):
         Return the list of published article groups
         """
         return Article_Group_Link.objects.filter(article_group=self.kwargs['pk']).order_by("sort_order")
-        #return Article_Group_Link.objects.filter(pub_date__lte=timezone.now(), article_group=self.kwargs['pk']).order_by("sort_order")
 
 class ArticleView(generic.ListView):
     model=Article
@@ -53,9 +52,3 @@ class today(generic.ListView):
         Return the list of published article groups
         """
         return Article.objects.filter(pub_date__month=today.month, pub_date__day=today.day) 
-        """
-        return Article.objects.filter(pub_date__month=today.month,
-                                      pub_date__day=today.day)
-        return Article.objects.filter(pub_date=timezone.now().date())               
-        return Article.objects.filter(pub_month=today.month, pub_month=today.day)                           
-        """
