@@ -27,11 +27,22 @@
             {% for article_group_content in latest_article_group_contents_list %}
             <div class="tile">
                 <div>
-                    <div class="tile-heading">{{ article_group_content.article.title }}</div>     
-                    <a href="/articles/{{ article_group_content.article.id }}/" type="image/jpg"><img src="https://dev-server.londonnaturedaybyday.com/static{{article_group_content.article.tile_image}}" 
+                    <div class="tile-heading">
+                        <a href="/articles/{{ article_group_content.article.id }}/" class="no-underline-heading">
+                            {{ article_group_content.article.title }}
+                        </a>
+                    </div>     
+                    <a href="/articles/{{ article_group_content.article.id }}/" type="image/jpg">
+                        <img src="https://dev-server.londonnaturedaybyday.com/media/{{article_group_content.article.tile_image}}" 
                                 alt="{{ article_group_content.article.title}}" class="centered-tile">
+                    </a>
+                    <a href="/articles/{{ article_group_content.article.id }}/" class="no-underline-text">
                         <div class="tile-text">{{ article_group_content.article.synopsis|safe }}</div>              
                     </a>
+                    <a href="/articles/{{ article_group_content.article.id }}/">
+                        <button class="rounded-button">Read More...</button>
+                    </a>
+                    <P></P>
                 </div>
             </div>  
             {% endfor %}

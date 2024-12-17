@@ -26,9 +26,11 @@
         <section class="tiles-container">
             {% for article_group in latest_article_group_list %}
             <div class="tile"> 
-                <a href="/articles/grouping/{{ article_group.id }}/" type="image/jpg"><img src="https://dev-server.londonnaturedaybyday.com/static{{article_group.tile_image}}" 
+                <P></P>
+                <a href="/articles/grouping/{{ article_group.id }}/" type="image/jpg"><img src="https://dev-server.londonnaturedaybyday.com/media/{{article_group.tile_image}}" 
                              alt="{{ article_group.title }}" class="centered-tile"></a>
                 <div class="bottom-left-over-image">{{ article_group.title }}</div>
+                <P></P>
             </div>      
             {% endfor %}
         </section>

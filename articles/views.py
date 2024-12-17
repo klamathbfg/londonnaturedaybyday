@@ -31,6 +31,7 @@ class ArticleGroupContentsView(generic.ListView):
         return Article_Group_Link.objects.filter(pub_date__lte=timezone.now(), article_group=self.kwargs['pk']).order_by("sort_order")
 
 class ArticleView(generic.ListView):
+    model=Article
     template_name = "articles/article.html"
     context_object_name = "article_contents"
 

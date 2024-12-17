@@ -8,6 +8,7 @@
     --color-footer-background: #898989;
     --color-background: #e5e5e5;
     --box-shadow: #00000033;
+    --standard-text: black;
     --main-font: 'Open Sans', sans-serif;
 }
 
@@ -63,6 +64,37 @@ article {
     margin-top: 2em;
 }
 
+.no-underline-heading,
+.no-underline-heading a:visited,
+.no-underline-heading a:active,
+.no-underline-heading a:hover {
+    text-decoration: none;
+    color: var(--color-brand-headings);
+}
+
+.no-underline-text,
+.no-underline-text a:visited,
+.no-underline-text a:active,
+.no-underline-text a:hover {
+    text-decoration: none;
+    color: var(--standard-text);
+}
+
+.rounded-button {
+    padding: 10px 20px;
+    font-size: 1.3em;
+    color: var(--color-brand-headings);
+    background-color: var(--color-brand-primary);
+    border: none;
+    border-radius: 25px;
+    border-color: var(--color-brand-headings);
+    cursor: pointer;
+    transition: var(--color-brand-primary) 0.3s ease;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 header {
     padding: 1em;
     background-color: var(--color-brand-primary);
@@ -101,15 +133,57 @@ footer address h2 {
     display: none;
 }
 
-#HomePageVideo {
-    width: 100%;
-    object-fit: cover;
+.picture-alongside-article-right-section,
+.picture-alongside-article-left-section {
+    display: none;
+}
+
+.youtube-container {
     position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.youtube-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .article-container {
     display: flex;
     min-height: 80vh;
+}
+
+.article-container-squashed {
+    position: absolute;
+    display: flex;
+    left: 0px;
+    min-height: 80vh;
+    max-width: 500px
+    width: 100%;
+}
+
+.squashed {
+    max-width: 650px;
+    margin: auto;
+}
+
+.image-right-layout,
+.image-left-layout {
+    display: flex;
+}
+
+.article-text {
+    flex: 1;
+}
+
+.article-image {
+    flex: 0 0 auto;
 }
 
 .tiles-container {
@@ -129,20 +203,18 @@ footer address h2 {
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
     position: relative;
-    margin: 10px;
+    margin: 2.5px;
+}
+
+.tile > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
 }
 
 .tile:hover {
     transform: scale(1.05);
 }
-
-.centered-tile {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    height: auto%;
-  }
 
 .tile-text {
     margin: 5%;
@@ -154,6 +226,16 @@ footer address h2 {
     font-weight: bold;
     color: var(--color-brand-headings);
 }
+
+.centered-tile {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: auto%;
+    text-decoration: none;
+  }
+
 
 .bottom-left-over-image {
     position: absolute;
@@ -169,7 +251,7 @@ footer address h2 {
     nav ul li a:hover,
     nav ul li a:visited {
         font-size: 1.1em;        
-    }    
+    }
 }
 
 @media (min-width: 750px){  
@@ -178,6 +260,25 @@ footer address h2 {
         text-align: center;
         padding-top: 1em;
         padding-bottom: 1em;
+    }
+
+    .picture-alongside-article-right-section {
+        display: block;
+        padding-left: 10px;
+    }
+
+    .picture-alongside-article-left-section {
+        display: block;
+        padding-right: 10px;
+    }
+
+    .picture-above-article-section {
+        display: none;
+    }
+
+    .youtube-container {
+        width: 75%;
+        padding-bottom: 42.19%; /* 16:9 aspect ratio */
     }
 
     nav ul li a,
@@ -197,7 +298,7 @@ footer address h2 {
     }
 
     main {
-        display: flex;
+        display: flex 1;
         width: 100%;
     }
 

@@ -22,17 +22,65 @@
     </header>
     <main>
         {% for article in article_contents %}
-        <aside>
-            <div class="logo-container"><img src="https://dev-server.londonnaturedaybyday.com/static{{ article.tile_image }}" alt="{{ article.title }} Tile Image"
-            width="250" height="250"></div>
-        </aside>    
-        <article>
-            <H1>{{article.title}}</H1>
-            <iframe width=175% height=175% src="{{article.youtube_video }}" allowfullscreen id="HomePageVideo"></iframe>
-            {{ article.synopsis|safe }}
-            <P></P>
+        <section class="article-container-squashed">
+            <div class="logo-container">
+                <div class="aside">
+                    <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article.tile_image }}" alt="{{ article.title }} Tile Image"
+                            width="250" height="250">
+                </div>
+            </div>        
+            <div class="squashed">
+                <H1>{{article.title}}</H1>
+                <div class="youtube-container">
+                    <iframe width=auto height=auto src="{{article.youtube_video }}" allowfullscreen id="HomePageVideo"></iframe>
+                </div>
+                <H2>Synopsis</H2>
+                {{ article.synopsis|safe }}
+                <H2>Article</H2>
+                {% for article_section_link in article.article_section_link_set.all|dictsort:'sort_order' %}
+                <div class="article-image">                               
+                    <!-- dealing with article right sections-->
+                    {% if article_section_link.article_section.article_layout.name == 'image-right' %}
+                    <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article_section_link.article_section.article_section_image }}" alt="{{ article.title }} Section Image"
+                    width=100% height=100% class="picture-above-article-section">                         
+                    <div class="image-right-layout">
+                        <div class="article-text">
+                        {{ article_section_link.article_section.article_section_content|safe }}
+                        </div>
+                        <div class="article-image">
+                            <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article_section_link.article_section.article_section_image }}" alt="{{ article.title }} Section Image"
+                            width=250 height=141 class="picture-alongside-article-right-section">                    
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- dealing with article left sections-->
+                    {% if article_section_link.article_section.article_layout.name == 'image-left' %}
+                    <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article_section_link.article_section.article_section_image }}" alt="{{ article.title }} Section Image"
+                    width=100% height=100% class="picture-above-article-section">                         
+                    <div class="image-left-layout">
+                        <div class="article-image">
+                            <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article_section_link.article_section.article_section_image }}" alt="{{ article.title }} Section Image"
+                            width=250 height=141 class="picture-alongside-article-left-section">                    
+                        </div>
+                        <div class="article-text">
+                            {{ article_section_link.article_section.article_section_content|safe }}
+                        </div>                        
+                    </div>
+                    {% endif %}
+                    <!-- dealing with simple sections-->
+                    {% if article_section_link.article_section.article_layout.name == 'simple' %}
+                    <div class="simple-layout">
+                        <div class="article-text">
+                            {{ article_section_link.article_section.article_section_content|safe }}
+                        </div>                        
+                    </div>
+                    {% endif %}                    
+                    <P></P>
+                </div>
+                {% endfor %}        
+            </div> 
+        </section>    
         {% endfor %}
-        </article>
-    </main>
+    </main> 
 </body>
 </html>
