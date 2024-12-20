@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner with Fixed Menu</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .banner {
+            width: 100%;
+            height: 100px;
+            background: url('https://dev-server.londonnaturedaybyday.com/static/images/site-banner.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu div {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        .menu-content {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .menu-content a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        .menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner"></div>
+    <div class="menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="menu-content" id="menuContent">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menuContent = document.getElementById('menuContent');
+            if (menuContent.style.display === 'block') {
+                menuContent.style.display = 'none';
+            } else {
+                menuContent.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+    <div class="article-container">
+        <div class="logo-container">
+            <div class="aside">
+                <img src="static/images/site-square.jpg" alt="London Nature day by day Logo"
+                    width="250" height="250">
+            </div>
+        </div>
+        <div class="article">
+            <H1>Welcome to London Nature day by day</H1>
+            <div class="youtube-container">
+                <iframe width=auto height=auto src="https://www.youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
+            </div>
+            <H2>About the site</H2>
+            <p>Hey London, have you ever stopped to think about the incredible nature hidden right here in our bustling city.  
+                Well get ready because on January 1st 2025 I am launching something truly special in memory of the 
+                Alan Christrian Palfrey a founding member of the plant life charity.</p>
+            <p>
+                Imagine this every single day for an entire year a new episode drops on X/Twitter, 
+                Facebook and YouTube revealing the secrets of London’s biodiversity.  
+                That’s right 365 episodes packed with fact, tips and stories about the environment around you.
+            </p>
+            <p>
+                From the rare plants tucked away in Hamsted Heath to the vibrant wildlife thriving along the Thames 
+                you will discover a new layer of our city that you never knew existed. Each Episode is designed to help you 
+                understand the importance of biodiversity on that specific day of the year.
+            </p>
+            <p>
+                You’ll learn how to spot seasonal changes, identify local species and appreciate the delicate balance of our 
+                urban ecosystem but this isn’t just about watching videos it’s about becoming part of a community.  
+                Share your experiences, join the conversation and let’s celebrate the natural beauty of London together.  
+                Whether you’re a nature enthusiast, a curious Londoner of someone looking to reconnect with the outdoors this series is for you.
+            </p>
+            <p>
+                So why am I doing this. To honor Alan Christan Palfreys legacy and to inspire you to see our city through a new lens.  Biodiversity 
+                isn’t just a buzzword it’s the heartbeat of our environment and every day there is something new to learn and appreciate.
+            </p>
+            <p>
+                So mark your calendars for the 1st of January 2025, subscribe, follow and get ready to embark on a year long journey into the hidden wonders of nature.  
+                Let’s make 2025 a year of discovery, learning and connection with the world around us.  
+            </p>
+            <p>
+                London are you ready to unlock the secrets of nature daily?  I can’t wait to share this adventure with you, see you on January 1st. 
+                Don’t forget to like, share and subscribe to stay updated.
+            </p>
+            <H2>Background</H2>
+            <P>
+                In the late 1960’s, a small group of largely teenage undergraduate Zoologists at King’s College on the Strand with all the bravura of 
+                youth invited Professor Maurice Wilkins (of DNA, Nobel prize fame) to a meeting with them to discuss the future of the planet and how 
+                to save it from imminent ecological disaster.  The great man surprisingly attended and listened quietly to their various protestations 
+                then calmly before leaving suggested they all gave up their degree studies immediately and went into politics.
+            </P>
+            <P>
+                I was one of those nonplussed students left in the room that day who ignored his advice.  Since then over the last half century 
+                I have been witness to the gradual desecration of innumerable habitats, ecosystems and legion upon legion of animal and plant species.  
+                In my retirement I decided to write this book partly as an apology for the appalling custodianship of the natural world by my generation 
+                but also with perhaps the vain hope that it might encourage some other young person to develop a deeper knowledge of the natural world about 
+                them and pick up the baton which I so foolishly laid down that day.
+            </P>
+            <H2>Introduction</H2>
+            <P>
+                It seems likely London from its Roman origins right up to the fifteenth century was largely devoid of gardens as we know them today and to a large 
+                extent coloured flowers.  Along the Thames we know there were many orchids in the marshes but winter would have been virtually colourless with so 
+                few native evergreens.  In the sixteenth century William Turner (1509-1568) collected and named over two hundred plants which he listed in his herbal, 
+                the first to be written in English.  Shortly after John Gerard (1545-1612) caretaker of Lord Burleigh’s garden on the Strand wrote his famous herbal 
+                and left us an invaluable list of plants that were being grown at that time.
+            </P>
+            <P>
+                The seventeenth century saw big changes with John Parkinson (1562-1650) apothecary to James I growing over 480 different plants in his garden in Long Acre 
+                and recording over 3,800 plants in his herbal.  Meanwhile the Tradescants, gardeners to Charles I, were busy collecting plants from abroad and rearing their 
+                own such as the hybrid London plane Plantanus x acerifolia which can still be found lining the Mall today.  Samuel Pepys wrote little of the natural 
+                world about him but his great friend and fellow diarist John Evelyn (1620-1706) wrote Sylva, the first definitive book on trees.  
+                The eighteenth century saw William Curtiss (1746-1799) director of the Chelsea Physic garden write his Flora Londoniensis with its handpainted engravings which, 
+                for many, have never been improved upon.
+            </P>
+            <P>
+                Then came the Victorians in the nineteenth century who sent collectors all over the world and they brought back many of the most colourful 
+                plants we see in our gardens today.  This collecting and introducing has continued right up until the present day resulting in the almost 
+                colourless four month winter the Romans would have known to a point when you can find colourful flowers all over London every day of the year.
+            </P>
+            <P>
+                All things considered, especially the march of concrete, London still has a surprising number of different wild habitats.  
+                It is quite rich in various kinds of woodland e.g. ancient, oak, beech, birch, mixed deciduous, conifer plantation and even box and yew.  
+                Kew, among its 13,000 trees, has species from every corner of the globe.  London’s grasslands are less rich and in many cases are badly degraded.  
+                However, a rich assemblage of species can still be found in some areas of calcareous grassland on the North Downs.  
+                Marshes and bogs have all been largely drained but a few still remain though open springs and spring-fed ponds are far harder to find.  
+                The same is true of wet and dry heathland which is largely lost, but not all of it.
+            </P>
+            <P>
+                London has fared better with regard to its aquatic habitats and still has many lakes, ponds, rivers, canals and reservoirs although many lack 
+                the emergent vegetation so vital to their biodiversity.  Any farmland bordering the city, like elsewhere, has been severely degraded by modern 
+                farming practices, sometimes up to the point it is almost like a desert.  However, it is always worth remembering one fifth of London is made up of gardens, 
+                there are 3,000 parks, 350 squares and any number of churchyards.  There also still remains valuable pockets of good saltmarsh, freshwater marsh, 
+                fen, wet woodland, estuarine mudflats, ancient hedges and ash scrub.  Besides this London boasts 2 national nature reserves, 142 local nature reserves, 
+                1,300 designated sites of importance for nature conservation, 36 sites of special scientific importance all to be enjoyed by the nine million people 
+                who live here.  It is always worth remembering London’s largest habitat is the Thames with its 100 different fish and London’s most biodiverse habitat 
+                is its soil with over 20,000 invertebrates per square metre in some muddy parts of the Thames.
+            </P>
+            <H2>Acknowledgements</H2>
+            <P>
+                Like most other authors I have first to acknowledge the debt I owe to my teachers.  My first teacher at school was Rodney Wilkinson at De La Salle College 
+                in Manchester who took me and other students out for a long walk one whole afternoon each week and identified virtually every living creature he encountered.  
+                It was he who suggested a summer job at the headquarters of the Freshwater Biological Association at Ferry House on the banks of Lake Windermere.  
+                It was here one day, accompanying T. T. Macan to Hodson’s Tarn, I was lucky enough to discover a new species of hydra.  
+                Then on to University here in London at King’s College and the great good luck to be taught by such people as Francis Rose, Mr Carpenter, Dr Cowan and 
+                Miss Hawkins with field courses where we were taken to Norway for alpine plants, Anglesey for littoral fauna, Calder Idris in Wales for mosses, Holkham, 
+                Norfolk for seamarsh, the Isle of Arran for geology and many others.  Later research on lakes was under the gentle guidance of R. S. Wilson at Bristol 
+                University.  Sadly such an education is now very much a thing of the past with so many residential field courses being far too expensive for students and 
+                therefore not offered.  Also there is now no pure Botany degree left available in Britain.                
+            </P>
+            <P>
+                Finally I would like to thank my husband Alan Christian Palfrey without whose support this book would never have seen the light of day and my close friend 
+                Beverley Leonard who has had the unenviable task of deciphering my longhand and volunteering to type the entire book.  Also my thanks go to all the field 
+                naturalists along the way who so freely shared their often encyclopaedic knowledge, especially those of the London Natural History Society and most especially 
+                Mario Tortelli, Trudy Flemming, Alex Henrici and Joyce Pitt.                
+            </P>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <address>
+                <h2>London Nature Day by Day</h2>
+                <p>London, United Kingdom</p>
+            </address>
+            <p>All rights reserved &copy; London Nature Day by Day</p>
+            <p>Contact us via <a href="mailto:tom@londonnaturedaybyday.com">email</a>.</p>
+        </div>    
+    </footer>    
+</body>
+</html>

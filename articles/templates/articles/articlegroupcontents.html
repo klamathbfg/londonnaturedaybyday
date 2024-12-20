@@ -12,14 +12,35 @@
 <style></style>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><img src="https://dev-server.londonnaturedaybyday.com/static/images/site-main-art.jpg"
-                    width="100" height="50" alt="London Nature day by day" class="site-banner"></li>
-                <li><a href="https://dev-server.londonnaturedaybyday.com/articles">All Articles</a></li>
-                <li><a href="https://dev-server.londonnaturedaybyday.com/articles/today">Todays Article</a></li>
-            </ul>
-        </nav>
+        <div class="banner">
+            <nav class="nav-overlay">
+                <ul>
+                    <li><a href="https://dev-server.londonnaturedaybyday.com/">Home</a></li>
+                    <li><a href="https://dev-server.londonnaturedaybyday.com/articles/">All Months</a></li>
+                    <Li><a href="https://dev-server.londonnaturedaybyday.com/articles/today">Today</a></li>
+                </ul>
+            </nav>       
+        </div>
+        <div class="menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu-content" id="menuContent">
+            <a href="https://dev-server.londonnaturedaybyday.com/">Home</a>
+            <a href="https://dev-server.londonnaturedaybyday.com/articles">All Months</a>
+            <a href="https://dev-server.londonnaturedaybyday.com/articles/today">Today</a>
+        </div>
+        <script>
+            function toggleMenu() {
+                var menuContent = document.getElementById('menuContent');
+                if (menuContent.style.display === 'block') {
+                    menuContent.style.display = 'none';
+                } else {
+                    menuContent.style.display = 'block';
+                }
+            }
+        </script>
     </header>
     {% if latest_article_group_contents_list %} 
     <main>
@@ -48,7 +69,7 @@
                         </a>
                         {% else %}
                         <a href="/articles/{{ article_group_content.article.id }}/">
-                            <button class="rounded-button">Coming on {{article_group_content.article.pub_date|date:"d F"}}</button>
+                            <button class="future-button">Coming on {{article_group_content.article.pub_date|date:"d F"}}</button>
                             <P></P>
                         {% endif %}
                     {% endwith %}
@@ -69,7 +90,7 @@
         <div class="article">
             <H1>Coming Soon</H1>
             <div class="youtube-container">
-                <iframe width=60% height=60% src="https://www.youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
+                <iframe width=60% height=60% src="https://dev-server.youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
             </div>
             <p>Teasers for this month have not yet been uploaded but will be soon, in the mean time please continue to explore
                 the teasers and articles available under <a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a> link.

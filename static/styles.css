@@ -12,11 +12,75 @@
     --main-font: 'Open Sans', sans-serif;
 }
 
+/* ################################################# */
+/*   New Section for three line menu and new header  */
+/* ################################################# */
+
+.nav-overlay {
+    position: fixed;
+    top: 35px;
+    left: 40px;
+    transform: translateY(-50%); /* Center vertically */
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.banner {
+    width: 100%;
+    height: 100px;
+    background: url('https://dev-server.londonnaturedaybyday.com/static/images/site-banner.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu div {
+    width: 35px;
+    height: 5px;
+    background-color:var(--color-brand-headings);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.menu-content {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    background-color: var(--color-brand-contrast);
+    box-shadow: 0 2px 10px var(--box-shadow);
+    z-index: 1000;
+}
+
+.menu-content a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--color-brand-headings);
+}
+
+.menu-content a:hover {
+    background-color: var(--color-brand-primary);
+}
+
+/* ################################################# */
+/* End of Section for three line menu and new header */
+/* ################################################# */
+
 html, body {
     margin: 0;
     font-family: var(--main-font);
     background-color: var(--color-background);
 }
+
 
 nav ul {
     margin: 0;
@@ -26,12 +90,13 @@ nav ul {
 nav > ul > li {
     display: inline-block;
     list-style: none;
-    margin: 0 0.5em 0 0.5em;
+    margin: 0 2em 0 2em;
     vertical-align: middle;
 }
 
 nav > ul > li:first-child {
-    margin: 0.5em;
+    padding-right: 2em;
+    margin: 0 5em 0 5em;
     padding: 0;
 }
 
@@ -95,9 +160,19 @@ article {
     margin-right: auto;
 }
 
-header {
-    padding: 1em;
-    background-color: var(--color-brand-primary);
+.future-button {
+    padding: 10px 20px;
+    font-size: 1.3em;
+    color: var(--color-brand-contrast);
+    background-color: var(--color-footer-background);
+    border: none;
+    border-radius: 25px;
+    border-color: var(--color-brand-headings);
+    cursor: pointer;
+    transition: var(--color-brand-primary) 0.3s ease;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer {
@@ -162,8 +237,9 @@ footer address h2 {
 .article-container-squashed {
     position: absolute;
     display: flex;
-    left: 0px;
+    left: 25px;
     min-height: 80vh;
+    min-width: 300px
     max-width: 500px
     width: 100%;
 }
@@ -195,9 +271,22 @@ footer address h2 {
     justify-content: center;
 }
 
+.tiles-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ########################## */
+/* used for the article tiles */
+/* ########################## */
+
 .tile {
     flex: 1 1 250px;
     max-width: 400px;
+    min-width: 275px;
     background-color: var(--color-brand-contrast);
     border: 0.5px ridge var(--color-brand-contrast);
     outline 2px solid var(--color-brand-headings);
@@ -229,6 +318,64 @@ footer address h2 {
     color: var(--color-brand-headings);
 }
 
+/* ################################# */
+/* end of used for the article tiles */
+/* ################################# */
+
+/* ############################## */
+/* used for the small month tiles */
+/* ############################## */
+
+.smalltile {
+    flex: 0 1 auto;
+    max-width: 175px;
+    max-height: 180px;
+    background-color: var(--color-brand-contrast);
+    border: 0.5px ridge var(--color-brand-contrast);
+    outline 2px solid var(--color-brand-headings);
+    box-shadow: 0 2px 4px var(--box=shadow);
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    margin: 2.5px;
+    align-items: center;
+}
+
+.smalltile > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smalltile:hover {
+    transform: scale(1.05);
+}
+
+.smalltile-text {
+    margin: 5%;
+}
+
+.smalltile-heading {
+    margin: 5%;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--color-brand-headings);
+}
+
+/* ##################################### */
+/* end of used for the small month tiles */
+/* ##################################### */
+
+.small-centered-tile {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: auto%;
+    text-decoration: none;
+    align-items: center;
+  }
+
 .centered-tile {
     display: block;
     margin-left: auto;
@@ -236,8 +383,8 @@ footer address h2 {
     width: 90%;
     height: auto%;
     text-decoration: none;
+    align-items: center;
   }
-
 
 .bottom-left-over-image {
     position: absolute;
@@ -247,12 +394,28 @@ footer address h2 {
     font-size: 1.2em;
 }
 
-@media (min-width: 400px){  
+.small-bottom-left-over-image {
+    position: absolute;
+    bottom: 12%;
+    left: 12%;
+    color: var(--color-brand-contrast);
+    font-size: 1.2em;
+}
+
+@media (min-width: 300px){  
     nav ul li a,
     nav ul li a:active,
     nav ul li a:hover,
     nav ul li a:visited {
-        font-size: 1.1em;        
+        font-size: 1em;        
+    }
+
+    .nav-overlay {
+        display: block;
+    }
+
+    nav > ul > li:first-child{
+        display: none;
     }
 }
 
@@ -289,6 +452,10 @@ footer address h2 {
     nav ul li a:visited {
         font-size: 1.4em;        
     }    
+    
+    nav > ul > li:first-child{
+        display: inline;
+    }        
 }
 
 @media (min-width: 960px){  
@@ -319,16 +486,21 @@ footer address h2 {
     }
 
     .logo-container {
-        flex: 1;
+        flex: 0.75;
+        max-width: 250px;
         display: flex;
         justify-content: center;
         align-items: top;
     }
 
+    .nav-overlay {
+        display: block;
+    }
+
     .logo-container img {
-        max-width: 250px;
+        max-width: 200px;
         padding-left: 1em;
-        padding-right: 2em;        
+        padding-right: 4em;        
     }
 
     .tile {
@@ -338,4 +510,8 @@ footer address h2 {
     .tile-heading {
         font-size: 1.1em;
     }
+    
+    nav > ul > li:first-child{
+        display: inline;
+    }    
 }

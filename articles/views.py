@@ -1,12 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.utils import timezone
-from django.db.models.functions import ExtractMonth, ExtractDay
 
 from .models import Article_Group, Article_Group_Link, Article
-
-#def index(request):
-#    return HttpResponse("Hello, world. You're at the londonnaturedaybyday index.")
 
 class ArticleGroupsView(generic.ListView):
     template_name = "articles/articlegroups.html"
