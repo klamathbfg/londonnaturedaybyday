@@ -435,6 +435,10 @@ footer address h2 {
         padding-top: 0.25em;
         padding-bottom: 0.25em;
     }
+    
+    .banner {
+        height: 400px;
+    }
 
     .picture-alongside-article-right-section {
         display: block;
