@@ -215,10 +215,11 @@ footer address h2 {
 
 .youtube-container {
     position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 25%;
     height: 0;
     overflow: hidden;
+    max-width: 750px;
+    max-height: 421px;
 }
 
 .youtube-container iframe {
@@ -227,6 +228,8 @@ footer address h2 {
     left: 0;
     width: 100%;
     height: 100%;
+    max-width: 750px;
+    max-height: 421px;
 }
 
 .article-container {
@@ -252,10 +255,16 @@ footer address h2 {
 .image-right-layout,
 .image-left-layout {
     display: flex;
+    max-width: 750px;
+}
+
+.synopsis {
+    max-width: 750px;
 }
 
 .article-text {
     flex: 1;
+    max-width: 750px;
 }
 
 .article-image {
@@ -441,10 +450,10 @@ footer address h2 {
         display: none;
     }
 
-    .youtube-container {
+    /*.youtube-container {
         width: 75%;
-        padding-bottom: 42.19%; /* 16:9 aspect ratio */
-    }
+        padding-bottom: 42.19%; 
+    }*/
 
     nav ul li a,
     nav ul li a:active,

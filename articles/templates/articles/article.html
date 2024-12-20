@@ -1,14 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>About London Nature Day by Day</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, 
-                                        initial-scale=1.0">
-        <link rel="stylesheet" href="https://dev-server.londonnaturedaybyday.com/static/styles.css">
-        <link rel="icon" type="image/jpg" href="https://dev-server.londonnaturedaybyday.com/static/images/favicon.jpg">
-    </head>
+<head>
+    <title> {% for article in article_contents %}
+                {{article.title}}
+            {% empty %}    
+                Article Template
+            {% endfor %}       
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+                                    initial-scale=1.0">
+    <link rel="stylesheet" href="https://dev-server.londonnaturedaybyday.com/static/styles.css">
+    <link rel="icon" type="image/jpg" href="https://dev-server.londonnaturedaybyday.com/static/images/favicon.jpg">
+</head>
 <body>
     <header>
         <div class="banner">
@@ -26,9 +31,22 @@
             <div></div>
         </div>
         <div class="menu-content" id="menuContent">
-            <a href="https://dev-server.londonnaturedaybyday.com/articles">All Months</a>
-            <a href="https://dev-server.londonnaturedaybyday.com/articles/grouping/1/">January</a>
             <a href="https://dev-server.londonnaturedaybyday.com">Home</a>
+            <a href="#" onclick="toggleSubMenu(event, 'All-Months-Sub-Menu')">Months Menu</a>
+            <div class="sub-menu" id="All-Months-Sub-Menu" style="display: none;">
+                {% if latest_article_group_list %}              
+                    {% for article_group in latest_article_group_list %}
+                    <div>  
+                        <a href="/articles/grouping/{{ article_group.id }}/">
+                            <img style="vertical-align:middle" src="https://dev-server.londonnaturedaybyday.com/media/{{article_group.tile_image}}" width="25" height="25">
+                            <span style="">- {{ article_group.title }}</span></a>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                <a href="https://dev-server.londonnaturedaybyday.com/articles"><I>- All Months</I></a>
+                {% endif %}           
+            </div>
+            <a href="https://dev-server.londonnaturedaybyday.com/articles/today">Today</a>
         </div>
         <script>
             function toggleMenu() {
@@ -39,31 +57,43 @@
                     menuContent.style.display = 'block';
                 }
             }
+
+            function toggleSubMenu(event, subMenuId) {
+               event.preventDefault();
+                var subMenu = document.getElementById(subMenuId);
+                if (subMenu.style.display === 'block') {
+                    subMenu.style.display = 'none';
+                } else {
+                    subMenu.style.display = 'block';
+                }
+            }
         </script>
     </header>
-    <main>
-        {% for article in article_contents %}
-        <section class="article-container-squashed">
-            <div class="logo-container">
-                <div class="aside">
-                    <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article.tile_image }}" alt="{{ article.title }} Tile Image"
-                            width=210px height=210px>
+    {% for article in article_contents %}
+    <div class="article-container">
+        <div class="logo-container">
+            <div class="aside">
+                <img style="vertical-align:middle" src="https://dev-server.londonnaturedaybyday.com/media/{{ article.tile_image }}" 
+                        alt="{{ article.title }} Tile Image" class="small-centered-tile">
+            </div>         
+        </div>
+        <div class="article">
+            <H1>{{article.title}}</H1>
+            <div class="youtube-container">
+                <iframe width=auto height=auto src="{{article.youtube_video }}" allowfullscreen id="HomePageVideo"></iframe>
+            </div>
+            <H2>Summary</H2>
+                <div class="synopsis">
+                    {{ article.synopsis|safe }}
                 </div>
-            </div>        
-            <div class="squashed">
-                <H1>{{article.title}}</H1>
-                <div class="youtube-container">
-                    <iframe width=auto height=auto src="{{article.youtube_video }}" allowfullscreen id="HomePageVideo"></iframe>
-                </div>
-                <H2>Summary</H2>
-                {{ article.synopsis|safe }}
-                <H2>Article</H2>
-                {% for article_section_link in article.article_section_link_set.all|dictsort:'sort_order' %}
-                <div class="article-image">                               
+            <H2>Article</H2>
+            {% for article_section_link in article.article_section_link_set.all|dictsort:'sort_order' %}
+            <div class="article-image">           
+                <P>
                     <!-- dealing with article right sections-->
                     {% if article_section_link.article_section.article_layout.name == 'image-right' %}
                     <img src="https://dev-server.londonnaturedaybyday.com/media/{{ article_section_link.article_section.article_section_image }}" alt="{{ article.title }} Section Image"
-                    width=100% height=100% class="picture-above-article-section">                         
+                        width=100% height=100% class="picture-above-article-section">                         
                     <div class="image-right-layout">
                         <div class="article-text">
                         {{ article_section_link.article_section.article_section_content|safe }}
@@ -95,37 +125,32 @@
                             {{ article_section_link.article_section.article_section_content|safe }}
                         </div>                        
                     </div>
-                    {% endif %}                    
-                    <P></P>
-                </div>       
-                {% empty %}     
-                <p>
-                The full article will be launched on {{ article.pub_date|date:"d F" }} until then you can enjoy a teaser of the content
-                that will be coming here and all articles using the <a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a> link.
-                </p>
-                {% endfor %}        
-            </div> 
-        </section>    
-        {% empty %}        
-        <div class="article-container">
-            <div class="logo-container">
-                <div class="aside">
-                    <img src="https://dev-server.londonnaturedaybyday.com/static/images/site-square.jpg" alt="London Nature day by day Logo"
-                        width="250" height="250">
-                </div>
+                    {% endif %}
+                </P>                                
             </div>
-            <div class="article">
-                <P></P>
-                <div class="youtube-container">
-                    <iframe width=auto height=auto src="https://dev-server.youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
-                </div>
-                <H2>Coming Soon</H2>
-                <p>London Nature Day by Day will be coming on 01 January, until then you can enjoy a teaser of the content
-                    that will be coming using the <a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a> link.
-                </p>
-            </div>
-        </div>                   
-        {% endfor %}
-    </main>            
+            {% empty %}     
+            <p>
+            The full article will be launched on {{ article.pub_date|date:"d F" }} until then you can enjoy a teaser of the content
+            that will be coming here and all articles using the <a href="https://dev-server.londonnaturedaybyday.com/articles/">All Articles</a> link.
+            </p>
+            {% endfor %}               
+        </div>
+    </div>
+    {% empty %}  
+    <div>
+
+    </div>
+    {% endfor %}  
+
+    <footer>
+        <div class="footer">
+            <address>
+                <h2>London Nature Day by Day</h2>
+                <p>London, United Kingdom</p>
+            </address>
+            <p>All rights reserved &copy; London Nature Day by Day</p>
+            <p>Contact us via <a href="mailto:tom@londonnaturedaybyday.com">email</a>.</p>
+        </div>    
+    </footer>               
 </body>
 </html>
