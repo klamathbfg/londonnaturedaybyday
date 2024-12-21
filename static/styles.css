@@ -213,23 +213,27 @@ footer address h2 {
     display: none;
 }
 
-.youtube-container {
-    position: relative;
-    padding-bottom: 25%;
-    height: 0;
-    overflow: hidden;
+.picture-above-article-layout,
+.picture-below-article-layout {
+    display: none;
     max-width: 750px;
-    max-height: 421px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.youtube-container {
+    flex: 0 0 auto;
+    max-width: 750px;
 }
 
 .youtube-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     max-width: 750px;
     max-height: 421px;
+    min-height: 421px;
+    min-width: 100%;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: auto; 
 }
 
 .article-container {
@@ -269,6 +273,7 @@ footer address h2 {
 
 .article-image {
     flex: 0 0 auto;
+    max-width: 750px;
 }
 
 .tiles-container {
@@ -426,6 +431,13 @@ footer address h2 {
     nav > ul > li:first-child{
         display: none;
     }
+    
+    .youtube-container iframe {
+        max-width: 750px;
+        max-height: 421px;
+        min-height: 210px;
+        min-width: 100%;
+    }        
 }
 
 @media (min-width: 750px){  
@@ -450,14 +462,14 @@ footer address h2 {
         padding-right: 10px;
     }
 
+    .picture-below-article-layout,
+    .picture-above-article-layout {
+        display: block;
+    }    
+
     .picture-above-article-section {
         display: none;
     }
-
-    /*.youtube-container {
-        width: 75%;
-        padding-bottom: 42.19%; 
-    }*/
 
     nav ul li a,
     nav ul li a:active,
@@ -469,6 +481,13 @@ footer address h2 {
     nav > ul > li:first-child{
         display: inline;
     }        
+    
+    .youtube-container iframe {
+        max-width: 750px;
+        max-height: 421px;
+        min-height: 421px;
+        min-width: 750px;
+    }         
 }
 
 @media (min-width: 960px){  
@@ -526,5 +545,12 @@ footer address h2 {
     
     nav > ul > li:first-child{
         display: inline;
+    }    
+    
+    .youtube-container iframe {
+        max-width: 750px;
+        max-height: 421px;
+        min-height: 421px;
+        min-width: 750px;
     }    
 }
