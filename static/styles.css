@@ -29,7 +29,7 @@
 .banner {
     width: 100%;
     height: 100px;
-    background: url('https://dev-server.londonnaturedaybyday.com/static/images/site-banner.jpg') no-repeat center center;
+    background: url('https://www.londonnaturedaybyday.com/static/images/site-banner.jpg') no-repeat center center;
     background-size: cover;
     position: relative;
 }
@@ -110,7 +110,7 @@ nav ul li a:visited {
     font-size: 0.9em;
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: var(--color-brand-headings);
 }
 
