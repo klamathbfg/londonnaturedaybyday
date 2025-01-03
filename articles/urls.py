@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from . import views, feeds
 
 urlpatterns = [
     path("", views.ArticleGroupsView.as_view(), name="articlegroups"),

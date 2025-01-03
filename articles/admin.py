@@ -26,7 +26,6 @@ class Article_Group_Link_Admin(admin.ModelAdmin):
         (None, {"fields": ["name"]}),
         ("Article Group Link Information", {"fields": [ "pub_date", "sort_order", "article_group", "article"]}),
     ]
-    inlines = [ArticleList]
 
 class Article_Admin(admin.ModelAdmin):
     fieldsets = [

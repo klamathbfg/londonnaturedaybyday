@@ -20,13 +20,14 @@
                 </ul>
             </nav>
         </div>
-        <div class="menu" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="menu">
+            <div onclick="toggleMenu()"></div>
+            <div onclick="toggleMenu()"></div>
+            <div onclick="toggleMenu()"></div>
             <P>
                 <script src="https://apis.google.com/js/platform.js"></script>
                 <div class="g-ytsubscribe" data-channelid="UC4YUbpHt1X8lH5kGyuEu97g" data-layout="default" data-count="default"></div>
+                &emsp;<a href="{% url 'articles_feed' %}"><img src="https://rss.com/blog/wp-content/uploads/2023/12/1024px-Feed-icon.svg_.png" alt="RSS Feed" style="width:25px;height:25px;"></a>
             </P>              
         </div>
         <div class="menu-content" id="menuContent">

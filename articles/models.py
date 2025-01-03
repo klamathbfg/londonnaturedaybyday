@@ -1,21 +1,18 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 class Article_Group(models.Model):
-    #tile_image = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     tile_image = models.ImageField(null=True, blank=True)
     sort_order = models.IntegerField(default=9999) 
     pub_date = models.DateTimeField("date to publish")
-
+    
     def __str__(self):
         return self.title
 
 class Article(models.Model):
-    #tile_image = models.CharField(max_length=200) 
-    #blog_image = models.CharField(max_length=200)     
-    #synopsis = models.CharField(max_length=1000)
     title = models.CharField(max_length=200)
     youtube_video = models.CharField(max_length=1000, null=True, blank=True)     
     tile_image = models.ImageField(null=True, blank=True)
@@ -25,6 +22,12 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return (f"http://dev-server.londonnaturedaybyday.com/articles/{self.pk}")
+
+    class Meta:
+        ordering = ['-pub_date']
 
 class Article_Group_Link(models.Model):
     name = models.CharField(max_length=200)
