@@ -6,46 +6,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
                                     initial-scale=1.0">
-    <link rel="stylesheet" href="https://dev-server.londonnaturedaybyday.com/static/styles.css">
-    <link rel="icon" type="image/jpg" href="https://dev-server.londonnaturedaybyday.com/static/images/favicon.jpg">
+    <link rel="stylesheet" href="{{ server_url }}/static/styles.css">
+    <link rel="icon" type="image/jpg" href="{{ server_url }}/static/images/favicon.jpg">
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0"></script>
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      
+        t._e = [];
+        t.ready = function(f) {
+          t._e.push(f);
+        };
+      
+        return t;
+      }(document, "script", "twitter-wjs"));</script>
     <header>
         <div class="banner">
             <nav class="nav-overlay">
                 <ul>
-                    <li><a href="https://dev-server.londonnaturedaybyday.com/articles/grouping/1/">January</a></li>
-                    <li><a href="https://dev-server.londonnaturedaybyday.com/articles/">All Months</a></li>
-                    <Li><a href="https://dev-server.londonnaturedaybyday.com/articles/today">Today</a></li>
-                </ul>
+                    <li><a href="{{ server_url }}/articles/grouping/1/">January</a></li>
+                    <li><a href="{{ server_url }}/articles/">All Months</a></li>
+                    <Li><a href="{{ server_url }}/articles/today">Today</a></li>
+                </ul>              
             </nav>
+            <div class="subscribe-menu">
+                <P>
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                    <div class="g-ytsubscribe" data-channelid="UC4YUbpHt1X8lH5kGyuEu97g" data-layout="default" data-count="default">
+                    </div>
+                    &emsp;<a href="{% url 'articles_feed' %}"><img src="{{ server_url }}/static/images/RSS-Feed-icon.png" alt="RSS Feed" style="width:24px;height:25px;"></a>
+                    &emsp;
+                    <section class="fb-share-button" 
+                        data-href={{ request.get_full_path }} 
+                        data-layout="button_count" data-size="">
+                    </section>
+                    &emsp;
+                    <a class="whatsapp-share-button" href="https://api.whatsapp.com/send?text={{ request.get_full_path }}">
+                        <img src="{{ server_url }}/static/images/whatsapp.png" alt="Share on WhatsApp" width="74" height="25">
+                    </a>&emsp;
+                    {% with request.get_full_path as current_url %}
+                        {% with current_url|urlencode as encoded_url %}
+                            {% with article_contents.first as article %}
+                                <a class="twitter-share-button" data-size=""
+                                    href="https://x.com/intent/post?url=https%2A%2F%2Fwww.londonnaturedaybyday.com{{ encoded_url }}&amp;text={{ article }}" target="_blank">
+                                Tweet</a>
+                            {% endwith %}
+                        {% endwith %}
+                    {% endwith %}    
+                </P>            
+            </div>
         </div>
         <div class="menu">
             <div onclick="toggleMenu()"></div>
             <div onclick="toggleMenu()"></div>
             <div onclick="toggleMenu()"></div>
-            <P>
-                <script src="https://apis.google.com/js/platform.js"></script>
-                <div class="g-ytsubscribe" data-channelid="UC4YUbpHt1X8lH5kGyuEu97g" data-layout="default" data-count="default"></div>
-                &emsp;<a href="{% url 'articles_feed' %}"><img src="https://rss.com/blog/wp-content/uploads/2023/12/1024px-Feed-icon.svg_.png" alt="RSS Feed" style="width:25px;height:25px;"></a>
-            </P>              
         </div>
         <div class="menu-content" id="menuContent">
+            <a href="{{ server_url }}">Home</a>
             <a href="#" onclick="toggleSubMenu(event, 'All-Months-Sub-Menu')">Months Menu</a>
             <div class="sub-menu" id="All-Months-Sub-Menu" style="display: none;">
                 {% if latest_article_group_list %}              
                     {% for article_group in latest_article_group_list %}
                     <div>  
                         <a href="/articles/grouping/{{ article_group.id }}/">
-                            <img style="vertical-align:middle" src="https://dev-server.londonnaturedaybyday.com/media/{{article_group.tile_image}}" width="25" height="25">
+                            <img style="vertical-align:middle" src="{{ server_url }}/media/{{article_group.tile_image}}" width="25" height="25">
                             <span style=""> {{ article_group.title }}</span></a>
                     </div>
                     {% endfor %}
                 {% else %}
-                <a href="https://dev-server.londonnaturedaybyday.com/articles"><I>- All Months</I></a>
+                <a href="{{ server_url }}/articles"><I>- All Months</I></a>
                 {% endif %}           
             </div>
-            <a href="https://dev-server.londonnaturedaybyday.com/articles/today">Today</a>
+            <a href="{{ server_url }}/articles/today">Today</a>
         </div>
         <script>
             function toggleMenu() {
@@ -65,7 +105,7 @@
                 } else {
                     subMenu.style.display = 'block';
                 }
-    }
+            }
         </script>
     </header>
     <div class="article-container">
@@ -76,7 +116,7 @@
                 <P></P>
                 <div class="smalltile"> 
                     <P></P>
-                    <a href="/articles/grouping/{{ article_group.id }}/" type="image/jpg"><img src="https://dev-server.londonnaturedaybyday.com/media/{{article_group.tile_image}}" 
+                    <a href="/articles/grouping/{{ article_group.id }}/" type="image/jpg"><img src="{{ server_url }}/media/{{article_group.tile_image}}" 
                                     alt="{{ article_group.title }}" class="small-centered-tile"></a>
                     <div class="small-bottom-left-over-image">{{ article_group.title }}</div>
                     <P></P>
@@ -106,7 +146,7 @@
                 a year of discovery, learning, and connection with the world around us. Are you ready to unlock the secrets of nature daily? We can't wait to share this adventure with you. Like, share, and subscribe to stay updated!
             </p>
             <div class="youtube-container">
-                <iframe width=auto height=auto src="https://youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
+                <iframe width=auto height=auto src="https://www.youtube.com/embed/x7A_dgMDcbQ?si=E5xp3E0nVJOGou4J" allowfullscreen id="HomePageVideo"></iframe>            
             </div>
             <H2>Background</H2>
             <P>

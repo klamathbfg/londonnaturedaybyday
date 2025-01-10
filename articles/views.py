@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.utils import timezone
 from django.db.models.functions import ExtractMonth, ExtractDay
-
 from .models import Article_Group, Article_Group_Link, Article, Article_Section, Article_Section_Link
+
+server_url = "https://dev-server.londonnaturedaybyday.com"
 
 class ArticleGroupsView(generic.ListView):
     template_name = "articles/articlegroups.html"
@@ -11,6 +12,10 @@ class ArticleGroupsView(generic.ListView):
 
     def get_queryset(self):
         return Article_Group.objects.filter(pub_date__lte=timezone.now()).order_by("sort_order")[ :20]
+    
+    def get_context_date(self, **kwargs):
+        context['server_url'] = server_url
+        return context
 
 class ArticleGroupContentsView(generic.ListView):
     model = Article_Group
@@ -24,6 +29,7 @@ class ArticleGroupContentsView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['latest_article_group_list'] = Article_Group.objects.filter(pub_date__lte=timezone.now()).order_by("sort_order")[ :20]
         context['This_Article_Group'] = Article_Group.objects.filter(pk=self.kwargs['pk'])
+        context['server_url'] = server_url
         return context
 
 class Today(generic.ListView):
@@ -43,6 +49,7 @@ class Today(generic.ListView):
                                                                     article__pub_date__month=today.month,
                                                                     article__pub_date__day=today.day).order_by("sort_order")[:20]
         context['latest_article_sections_list'] = article_section_links
+        context['server_url'] = server_url
         return context   
 
 class ArticleView(generic.ListView):
@@ -58,6 +65,7 @@ class ArticleView(generic.ListView):
         context['latest_article_group_list'] = Article_Group.objects.filter(pub_date__lte=timezone.now()).order_by("sort_order")[ :20]
         article_section_links = Article_Section_Link.objects.filter(article_section__pub_date__lte=timezone.now(),article_id=self.kwargs['pk']).order_by("sort_order")[:20]
         context['latest_article_sections_list'] = article_section_links
+        context['server_url'] = server_url
         return context   
 
 class ArticlePreview(generic.ListView):
@@ -73,4 +81,5 @@ class ArticlePreview(generic.ListView):
         context['latest_article_group_list'] = Article_Group.objects.filter(pub_date__lte=timezone.now()).order_by("sort_order")[ :20]
         article_section_links = Article_Section_Link.objects.filter(article_id=self.kwargs['pk']).order_by("sort_order")[:20]
         context['latest_article_sections_list'] = article_section_links
+        context['server_url'] = server_url
         return context    

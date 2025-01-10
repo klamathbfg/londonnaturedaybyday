@@ -16,6 +16,7 @@
 /*   New Section for three line menu and new header  */
 /* ################################################# */
 
+
 .nav-overlay {
     position: fixed;
     top: 35px;
@@ -43,6 +44,22 @@
 }
 
 .menu div {
+    width: 35px;
+    height: 5px;
+    background-color:var(--color-brand-headings);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.subscribe-menu {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.subscribe-menu div {
     width: 35px;
     height: 5px;
     background-color:var(--color-brand-headings);
@@ -553,4 +570,20 @@ footer address h2 {
         min-height: 421px;
         min-width: 750px;
     }    
+}
+
+.fb-share-button {
+    vertical-align: top;
+    display: inline-block;
+    transform: scale(1.15);
+}
+
+.whatsapp-share-button {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.twitter-share-button {
+    vertical-align: top;
+    display: inline-block;
 }
