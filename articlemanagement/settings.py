@@ -25,7 +25,7 @@ BASE_URL = os.getenv('BASE_URL', 'https://dev-server.londonnaturedaybyday.com')
 SECRET_KEY = 'django-insecure-p31lyqul00n0#vit=vi808o^#m^l9t8k-2(o$veo4nlb*_z6*5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #ALLOWED_HOSTS = ['20.93.112.109', '127.0.0.1', ‘localhost’, '.londonnaturedaybyday.com']
 ALLOWED_HOSTS = ['*']
