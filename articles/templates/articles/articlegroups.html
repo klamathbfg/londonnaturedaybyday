@@ -34,7 +34,7 @@
             <nav class="nav-overlay">
                 <ul>
                     <li><a href="{{ server_url }}/articles/grouping/1/">January</a></li>
-                    <li><a href="{{ server_url }}">Home</a></li>
+                    <li><a href="{{ server_url }}/about">Home</a></li>
                     <Li><a href="{{ server_url }}/articles/today">Today</a></li>
                 </ul>              
             </nav>
@@ -71,7 +71,7 @@
             <div onclick="toggleMenu()"></div>
         </div>
         <div class="menu-content" id="menuContent">
-            <a href="{{ server_url }}">Home</a>
+            <a href="{{ server_url }}/about">Home</a>
             <a href="#" onclick="toggleSubMenu(event, 'All-Months-Sub-Menu')">Months Menu</a>
             <div class="sub-menu" id="All-Months-Sub-Menu" style="display: none;">
                 {% if latest_article_group_list %}              
