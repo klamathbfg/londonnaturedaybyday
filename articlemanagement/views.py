@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.db.models.functions import ExtractMonth, ExtractDay
 from articles.models import Article_Group, Article, Article_Section_Link
 
-server_url = "https://www.londonnaturedaybyday.com"
+server_url = "https://dev-server.londonnaturedaybyday.com"
 
 class homepage(generic.ListView):
     template_name = "articles/homepage.html"

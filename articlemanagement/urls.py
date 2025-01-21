@@ -14,5 +14,6 @@ urlpatterns = [
     path('', views.Today.as_view(), name="today"),
     path('about', views.homepage.as_view(), name="Home-Page"),
     path("today", views.Today.as_view(), name="today"),
-    path("feed/rss/", feeds.RssArticleFeeds(), name="articles_feed")
+    path("feed/rss/", feeds.RssArticleFeeds(), name="articles_feed"),
+    path("latestarticles/", feeds.RssArticleFeeds(), name="articles_feed"),
 ]
