@@ -3,8 +3,9 @@ from django.views import generic
 from django.utils import timezone
 from django.db.models.functions import ExtractMonth, ExtractDay
 from articles.models import Article_Group, Article, Article_Section_Link
+from django.conf import settings
 
-server_url = "https://dev-server.londonnaturedaybyday.com"
+server_url = settings.BASE_URL
 
 class homepage(generic.ListView):
     template_name = "articles/homepage.html"
