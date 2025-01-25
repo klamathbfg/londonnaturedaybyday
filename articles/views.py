@@ -3,8 +3,9 @@ from django.views import generic
 from django.utils import timezone
 from django.db.models.functions import ExtractMonth, ExtractDay
 from .models import Article_Group, Article_Group_Link, Article, Article_Section, Article_Section_Link
+from django.conf import settings
 
-server_url = "https://dev-server.londonnaturedaybyday.com"
+server_url = settings.BASE_URL
 
 class ArticleGroupsView(generic.ListView):
     template_name = "articles/articlegroups.html"
