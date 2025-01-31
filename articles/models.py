@@ -4,11 +4,12 @@ from django.utils import timezone
 from django.urls import reverse
 
 class Article_Group(models.Model):
+    #tile_image = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     tile_image = models.ImageField(null=True, blank=True)
     sort_order = models.IntegerField(default=9999) 
     pub_date = models.DateTimeField("date to publish")
-    
+
     def __str__(self):
         return self.title
 
@@ -24,7 +25,7 @@ class Article(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return (f"http://dev-server.londonnaturedaybyday.com/articles/{self.pk}")
+        return (f"https://www.londonnaturedaybyday.com/articles/{self.pk}")
 
     class Meta:
         ordering = ['-pub_date']
