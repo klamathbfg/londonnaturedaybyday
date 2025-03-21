@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_URL = os.getenv('BASE_URL', 'https://dev-server.londonnaturedaybyday.com')
+BASE_URL = os.getenv('BASE_URL', 'https://www.londonnaturedaybyday.com')
 
 
 # Quick-start development settings - unsuitable for production
